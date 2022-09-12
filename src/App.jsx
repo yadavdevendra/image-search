@@ -110,7 +110,9 @@ export default function App() {
               search(e.target.value);
             }}
           />
-          <p className="countimg">{images.length} Result (s) Foun!</p>
+          {images && (
+            <p className="countimg">{images.length} Result (s) Found!</p>
+          )}
         </div>
         <div className="buttons">
           <div className="btn">

@@ -53,7 +53,7 @@ function OpenModal({ setblur, modal }) {
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        // onRequestClose={closeModal}
+        onRequestClose={closeModal}
         style={customStyles}
       >
         <div className="search">
