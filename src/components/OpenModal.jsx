@@ -53,7 +53,7 @@ function OpenModal({ setblur, modal }) {
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
+        // onRequestClose={closeModal}
         style={customStyles}
       >
         <div className="search">
@@ -66,7 +66,7 @@ function OpenModal({ setblur, modal }) {
               setSearchtext(e.target.value);
             }}
           />
-          <button onClick={closeModal}>Close</button>
+          {/* <button onClick={closeModal}>Close</button> */}
         </div>
 
         {images.map((image, imgindex) => {
