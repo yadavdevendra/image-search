@@ -99,10 +99,17 @@ export default function App() {
   }
   const getkeyvalue = (imgId) => {
     let newItem = selectallimage.filter((img) => img !== imgId);
-    setSelectallimage([...newItem, imgId]);
+    let tf = false;
+    for (let select = 0; select < selectallimage.length; select++) {
+      if (imgId === selectallimage[select]) tf = true;
+    }
+    if (tf) {
+      setSelectallimage(newItem);
+    } else {
+      setSelectallimage([...newItem, imgId]);
+    }
   };
-
-  console.log("for delete", selectallimage);
+  // console.log("for delete", selectallimage);
   return (
     <>
       <div className="container">
