@@ -28,7 +28,7 @@ export default function App() {
 
   const search = (value) => {
     if (value == "") {
-      setImages(images);
+      return setImages(TotalImg);
     }
 
     const searchedImg = TotalImg.filter((item) => {
@@ -42,17 +42,23 @@ export default function App() {
     console.log("valueof", valueof);
     if (valueof == "disc") {
       let newopt = images.sort((a, b) => {
-        if (a.description > b.description) {
+        if (
+          a.description?.toLowerCase() > b.description?.toLowerCase() ||
+          a.alt_description > b.alt_description
+        ) {
           return 1;
         }
-        if (a.description < b.description) {
+        if (
+          a.description?.toLowerCase() < b.description?.toLowerCase() ||
+          a.alt_description < b.alt_description
+        ) {
           return -1;
         }
         return 0;
       });
       setImages([...newopt]);
     } else {
-      let newdate = images.sort((a, b) => {
+      let newdate = TotalImg.sort((a, b) => {
         return new Date(a.created_at) - new Date(b.created_at);
       });
       setImages([...newdate]);
@@ -125,7 +131,11 @@ export default function App() {
                 DeSelect All
               </button>
             )}
-            <OpenModal setblur={setblur} modal={modal} />
+            <OpenModal
+              setblur={setblur}
+              modal={modal}
+              setTotalImg={setTotalImg}
+            />
             {/* model={model(modelval)}  */}
             <button className="btn2" onClick={deleteimage}>
               Delete

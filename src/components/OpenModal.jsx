@@ -2,18 +2,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "./modal.css";
-const customStyles = {
-  content: {
-    position: "absolute",
-    background: "white",
-    width: "30%",
-    top: "40%",
-    left: "40%",
-    transform: "translate(-50%,-50%)",
-  },
-};
+// const customStyles = {
+//   content: {
+//     position: "absolute",
+//     background: "white",
+//     height: "110px",
+//     width: "25%",
+//     top: "40%",
+//     left: "40%",
+//     transform: "translate(-50%,-50%)",
+//   },
+// };
 
-function OpenModal({ setblur, modal }) {
+function OpenModal({ modal, setTotalImg }) {
   const [searchtext, setSearchtext] = useState("");
   const [images, setImages] = useState([]);
   useEffect(() => {
@@ -39,24 +40,30 @@ function OpenModal({ setblur, modal }) {
 
   function closeModal() {
     setIsOpen(false);
+    setImages([]);
   }
   function handleClichSearch(image) {
+    if (image == " ") {
+      setImages([]);
+      return;
+    }
     modal(image);
     setIsOpen(false);
+    setTotalImg(image);
   }
 
   return (
     <div>
       <button className="btn3" onClick={openModal}>
-        Open Modal
+        Add Images
       </button>
       <Modal
+        className="stylemodal"
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
       >
-        <div className="search">
+        <div className="Search">
           <input
             type="text"
             id="mySearch"
