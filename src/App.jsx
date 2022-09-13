@@ -185,7 +185,7 @@ export default function App() {
             </button>
           </div>
         </div>
-        {lod && <h1 className="loding">Loding......</h1>}
+        {lod && <h1 className="loding">Loding...</h1>}
         {!lod &&
           images.map((image) => {
             return (

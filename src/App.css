@@ -86,3 +86,6 @@ select {
   font-weight: bold;
   border-radius: 10px;
 }
+.loding {
+  border: none;
+}

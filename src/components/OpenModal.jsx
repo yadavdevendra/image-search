@@ -89,9 +89,7 @@ function OpenModal({ modal, setTotalImg }) {
               />
               <p className="discription">
                 description:{" "}
-                {() =>
-                  handeleSlice(image?.description || image?.alt_description)
-                }
+                {() => image?.description || image?.alt_description}
               </p>
             </div>
           );
