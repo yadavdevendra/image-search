@@ -34,9 +34,9 @@ function OpenModal({ modal, setTotalImg }) {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    subtitle.style.color = "#f00";
-  }
+  // function afterOpenModal() {
+  //   // subtitle.style.color = "#f00";
+  // }
 
   function closeModal() {
     setIsOpen(false);
@@ -63,7 +63,7 @@ function OpenModal({ modal, setTotalImg }) {
       <Modal
         className="stylemodal"
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
+        // onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
       >
         <div className="Search">
@@ -79,7 +79,7 @@ function OpenModal({ modal, setTotalImg }) {
           {/* <button onClick={closeModal}>Close</button> */}
         </div>
 
-        {images.map((image, imgindex) => {
+        {images?.map((image, imgindex) => {
           return (
             <div key={imgindex} className="wrapper">
               <img

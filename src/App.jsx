@@ -36,10 +36,10 @@ export default function App() {
       return;
     }
 
-    const searchedImg = TotalImg.filter((item) => {
+    const searchedImg = TotalImg?.filter((item) => {
       if (item.description !== null && item.alt_description !== null) {
         return item.description.indexOf(value) == -1 ? false : true;
-      } //else return false;
+      } else return false;
     });
     setImages(searchedImg);
   };
@@ -88,7 +88,7 @@ export default function App() {
     }
     return blur;
   }
-  // console.log(selectallimage);
+
   function deleteimage() {
     const newItem = [];
     for (let image of images) {
@@ -114,10 +114,6 @@ export default function App() {
       setSelectallimage([...newItem, imgId]);
     }
   };
-  // console.log(page);
-  // function prev() {}
-  // function next() {}
-  // console.log("for delete", selectallimage);
   return (
     <>
       <div className="container">
