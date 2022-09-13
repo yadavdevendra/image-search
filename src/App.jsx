@@ -34,7 +34,7 @@ export default function App() {
     const searchedImg = TotalImg.filter((item) => {
       if (item.description !== null && item.alt_description !== null) {
         return item.description.indexOf(value) == -1 ? false : true;
-      } else return false;
+      } //else return false;
     });
     setImages(searchedImg);
   };
@@ -43,16 +43,16 @@ export default function App() {
     if (valueof == "disc") {
       let newopt = images.sort((a, b) => {
         if (
-          a.description?.toLowerCase() > b.description?.toLowerCase() ||
-          a.alt_description > b.alt_description
-        ) {
-          return 1;
-        }
-        if (
-          a.description?.toLowerCase() < b.description?.toLowerCase() ||
-          a.alt_description < b.alt_description
+          (a.description?.toLowerCase() || a.alt_description?.toLowerCase()) <
+          (b.description?.toLowerCase() || b.alt_description?.toLowerCase())
         ) {
           return -1;
+        }
+        if (
+          (a.description?.toLowerCase() || a.alt_description?.toLowerCase()) >
+          (b.description?.toLowerCase() || b.alt_description?.toLowerCase())
+        ) {
+          return 1;
         }
         return 0;
       });
