@@ -51,7 +51,10 @@ function OpenModal({ modal, setTotalImg }) {
     setIsOpen(false);
     setTotalImg(image);
   }
-
+  // function handeleSlice(val) {
+  //   const valslice = val.slice(0, 5);
+  //   return valslice;
+  // }
   return (
     <div>
       <button className="btn3" onClick={openModal}>
@@ -85,7 +88,10 @@ function OpenModal({ modal, setTotalImg }) {
                 onClick={() => handleClichSearch(image)}
               />
               <p className="discription">
-                {image.description || image.alt_description}
+                description:{" "}
+                {() =>
+                  handeleSlice(image?.description || image?.alt_description)
+                }
               </p>
             </div>
           );

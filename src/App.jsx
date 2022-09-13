@@ -6,8 +6,10 @@ export default function App() {
   const [images, setImages] = useState([]);
   const [TotalImg, setTotalImg] = useState("");
   const [selectallimage, setSelectallimage] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [selected, setSetselected] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [lod, setLod] = useState(true);
 
   // const [loaded, setLoaded] = useState(false);
   // const imgRef = useRef();
@@ -20,6 +22,7 @@ export default function App() {
       .then((data) => {
         setImages(data.results);
         setTotalImg(data.results);
+        setLod(false);
       });
   }, [page]);
 
@@ -27,8 +30,10 @@ export default function App() {
   // console.log("IMAGES", images);
 
   const search = (value) => {
+    setSearchText(value);
     if (value == "") {
-      return setImages(TotalImg);
+      setImages(TotalImg);
+      return;
     }
 
     const searchedImg = TotalImg.filter((item) => {
@@ -59,7 +64,7 @@ export default function App() {
       setImages([...newopt]);
     } else {
       let newdate = TotalImg.sort((a, b) => {
-        return new Date(a.created_at) - new Date(b.created_at);
+        return new Date(a?.updated_at) - new Date(b?.updated_at);
       });
       setImages([...newdate]);
     }
@@ -109,6 +114,9 @@ export default function App() {
       setSelectallimage([...newItem, imgId]);
     }
   };
+  // console.log(page);
+  // function prev() {}
+  // function next() {}
   // console.log("for delete", selectallimage);
   return (
     <>
@@ -123,7 +131,7 @@ export default function App() {
               search(e.target.value);
             }}
           />
-          {images && (
+          {searchText !== "" && (
             <p className="countimg">{images.length} Result (s) Found!</p>
           )}
         </div>
@@ -158,22 +166,52 @@ export default function App() {
               </select>
             </label>
           </div>
+          <div className="prevnext">
+            {page >= 1 && (
+              <button
+                className="btn4"
+                onClick={() => {
+                  if (page == 1) return;
+                  setLod(true);
+                  setPage(page - 1);
+                }}
+              >
+                Prev
+              </button>
+            )}
+            <button
+              className="btn5"
+              onClick={() => {
+                setLod(true);
+                setPage(page + 1);
+              }}
+            >
+              Next
+            </button>
+          </div>
         </div>
-        {images.map((image) => {
-          return (
-            <div className="wrapper" key={image.id}>
-              <img
-                className={setblur(image.id) ? "img select" : "img"}
-                src={image.urls.small}
-                // ref={imgRef}
-                onClick={() => getkeyvalue(image.id)}
-              />
-              <p className="discription">
-                {image.description || image.alt_description}
-              </p>
-            </div>
-          );
-        })}
+        {lod && <p>Loding......</p>}
+        {!lod &&
+          images.map((image) => {
+            return (
+              <div className="wrapper" key={image.id}>
+                <img
+                  className={setblur(image.id) ? "img select" : "img"}
+                  src={image.urls.small}
+                  // ref={imgRef}
+                  onClick={() => getkeyvalue(image.id)}
+                />
+                <p className="discription">
+                  discription:
+                  {image.description?.slice(0, 12) + "..." ||
+                    image.alt_description?.slice(0, 12)}
+                  <a title={image.description || image.alt_description}>...</a>
+                </p>
+                date:
+                {image.updated_at.slice(0, 10).split("-").reverse().join("-")}
+              </div>
+            );
+          })}
       </div>
     </>
   );

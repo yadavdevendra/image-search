@@ -2,6 +2,7 @@
   text-align: center;
   margin-top: -10rem;
   padding: 10rem;
+  background-color: aqua;
 }
 .search {
   margin-top: 1rem;
@@ -23,14 +24,15 @@
   margin: 2rem;
 }
 .buttons {
+  margin-top: 0.5rem;
   display: flex;
   justify-content: space-evenly;
 }
 .btn {
   display: flex;
   justify-content: space-evenly;
-  width: 450px;
-  margin-left: 0rem;
+  width: 500px;
+  margin-left: -2rem;
 }
 .select {
   display: grid;
@@ -49,6 +51,17 @@
 }
 .btn3 {
   background-color: rgb(18, 218, 64);
+}
+.prevnext {
+  width: 50px;
+  display: flex;
+  margin-right: 7rem;
+}
+.btn4 {
+  background-color: rgb(233, 108, 255);
+}
+.btn5 {
+  background-color: rgb(120, 109, 241);
 }
 #mySearch {
   width: 50%;
