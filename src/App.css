@@ -7,7 +7,7 @@
   margin-top: 1rem;
 }
 .container {
-  background-color: rgb(98, 162, 239);
+  background-color: rgb(198, 200, 201);
   text-align: center;
   border: 2px solid gray;
   border-radius: 10px;
@@ -35,12 +35,10 @@
 }
 .select {
   display: grid;
-  border: 2px solid red;
   grid-template-columns: repeat(1, 1fr);
   height: 300px;
   width: 300px;
-  margin-top: 0.5rem;
-  opacity: 0.5;
+  opacity: 0.1;
 }
 
 .btn1 {
@@ -75,4 +73,16 @@
 img.img {
   width: 150px;
   height: 150px;
+}
+.dropdown {
+  width: 200px;
+  justify-content: flex-start;
+  font-weight: bold;
+  color: black;
+}
+
+select {
+  height: 40px;
+  font-weight: bold;
+  border-radius: 10px;
 }
