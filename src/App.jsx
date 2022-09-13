@@ -167,7 +167,6 @@ export default function App() {
               <button
                 className="btn4"
                 onClick={() => {
-                  if (page == 1) return;
                   setLod(true);
                   setPage(page - 1);
                 }}
@@ -186,7 +185,7 @@ export default function App() {
             </button>
           </div>
         </div>
-        {lod && <p>Loding......</p>}
+        {lod && <h1 className="loding">Loding......</h1>}
         {!lod &&
           images.map((image) => {
             return (
