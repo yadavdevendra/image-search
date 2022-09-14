@@ -187,28 +187,32 @@ export default function App() {
             </button>
           </div>
         </div>
-        {lod && <h1 className="loding">Loding...</h1>}
-        {!lod &&
-          images.map((image) => {
-            return (
-              <div className="wrapper" key={image.id}>
-                <img
-                  className={setblur(image.id) ? "img select" : "img"}
-                  src={image.urls.small}
-                  // ref={imgRef}
-                  onClick={() => getkeyvalue(image.id)}
-                />
-                <p className="discription">
-                  Description:
-                  {image.description?.slice(0, 12) + "..." ||
-                    image.alt_description?.slice(0, 12)}
-                  <a title={image.description || image.alt_description}>...</a>
-                </p>
-                Date:
-                {image.updated_at.slice(0, 10).split("-").reverse().join("-")}
-              </div>
-            );
-          })}
+        <div className="imgcontainer">
+          {lod && <h1 className="loding">Loding...</h1>}
+          {!lod &&
+            images.map((image) => {
+              return (
+                <div className="wrapper" key={image.id}>
+                  <img
+                    className={setblur(image.id) ? "img select" : "img"}
+                    src={image.urls.small}
+                    // ref={imgRef}
+                    onClick={() => getkeyvalue(image.id)}
+                  />
+                  <p className="discription">
+                    <span>Description:</span>
+                    {image.description?.slice(0, 12) + "..." ||
+                      image.alt_description?.slice(0, 12)}
+                    <a title={image.description || image.alt_description}>
+                      ...
+                    </a>
+                  </p>
+                  <span>Date:</span>
+                  {image.updated_at.slice(0, 10).split("-").reverse().join("-")}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </>
   );
