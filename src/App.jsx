@@ -117,6 +117,7 @@ export default function App() {
   return (
     <>
       <div className="container">
+        <p>Page: {page + 1}</p>
         <div className="search">
           <input
             type="text"
@@ -152,12 +153,13 @@ export default function App() {
               Delete
             </button>
           </div>
+
           <div className="dropdown">
             <label>
-              Select by:
+              Select By:
               <select onChange={(e) => optionselected(e.target.value)}>
-                <option>please select</option>
-                <option value="disc">discription</option>
+                <option>Please Select</option>
+                <option value="disc">Description</option>
                 <option value="date">Date</option>
               </select>
             </label>
@@ -197,12 +199,12 @@ export default function App() {
                   onClick={() => getkeyvalue(image.id)}
                 />
                 <p className="discription">
-                  discription:
+                  Description:
                   {image.description?.slice(0, 12) + "..." ||
                     image.alt_description?.slice(0, 12)}
                   <a title={image.description || image.alt_description}>...</a>
                 </p>
-                date:
+                Date:
                 {image.updated_at.slice(0, 10).split("-").reverse().join("-")}
               </div>
             );
