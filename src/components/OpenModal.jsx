@@ -88,8 +88,7 @@ function OpenModal({ modal, setTotalImg }) {
                 onClick={() => handleClichSearch(image)}
               />
               <p className="discription">
-                description:{" "}
-                {() => image?.description || image?.alt_description}
+                {image?.description || image?.alt_description}
               </p>
             </div>
           );

@@ -6,7 +6,7 @@ export default function App() {
   const [images, setImages] = useState([]);
   const [TotalImg, setTotalImg] = useState("");
   const [selectallimage, setSelectallimage] = useState([]);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [selected, setSetselected] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [lod, setLod] = useState(true);
@@ -114,10 +114,16 @@ export default function App() {
       setSelectallimage([...newItem, imgId]);
     }
   };
+  function desc(value) {
+    if (value == null) {
+      return "not available";
+    }
+    return value?.slice(0, 6) + "...";
+  }
   return (
     <>
       <div className="container">
-        <p>Page: {page + 1}</p>
+        <p>Page: {page}</p>
         <div className="search">
           <input
             type="text"
@@ -165,7 +171,7 @@ export default function App() {
             </label>
           </div>
           <div className="prevnext">
-            {page >= 1 && (
+            {page > 1 && (
               <button
                 className="btn4"
                 onClick={() => {
@@ -196,17 +202,16 @@ export default function App() {
                   <img
                     className={setblur(image.id) ? "img select" : "img"}
                     src={image.urls.small}
-                    // ref={imgRef}
                     onClick={() => getkeyvalue(image.id)}
                   />
                   <p className="discription">
                     <span>Description:</span>
-                    {image.description?.slice(0, 12) + "..." ||
-                      image.alt_description?.slice(0, 12)}
+
                     <a title={image.description || image.alt_description}>
-                      ...
+                      {desc(image.description || image.alt_description)}
                     </a>
                   </p>
+
                   <span>Date:</span>
                   {image.updated_at.slice(0, 10).split("-").reverse().join("-")}
                 </div>
