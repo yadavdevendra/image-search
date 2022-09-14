@@ -116,6 +116,7 @@ export default function App() {
   };
   return (
     <>
+      <p>Page: {page + 1}</p>
       <div className="container">
         <p>Page: {page + 1}</p>
         <div className="search">

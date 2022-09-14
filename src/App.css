@@ -14,7 +14,11 @@
 }
 .container {
   width: 100%;
+<<<<<<< HEAD
   height: 305vh;
+=======
+  height: 100%;
+>>>>>>> f1b5d280666f13d5bbd5a9fa557d366374d1951f
   background-color: rgb(198, 200, 201);
   text-align: center;
   /* border: 2px solid gray; */
